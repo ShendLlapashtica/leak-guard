@@ -1,5 +1,7 @@
 # leak-guard
 
+[![tests](https://github.com/ShendLlapashtica/leak-guard/actions/workflows/test.yml/badge.svg)](https://github.com/ShendLlapashtica/leak-guard/actions/workflows/test.yml)
+
 **A Claude Code plugin that stops your agent committing your API keys.**
 
 An agent writes files fast, and it commits them. Somewhere in that speed is the
