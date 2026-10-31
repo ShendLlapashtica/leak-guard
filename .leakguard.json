@@ -1,0 +1,4 @@
+{
+  "skip": ["test/"],
+  "_comment": "The test suite is built out of credential-shaped fixtures on purpose. Scoping the guard beats switching it off: everything outside test/ is still checked."
+}

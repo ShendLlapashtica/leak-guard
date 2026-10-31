@@ -1,0 +1,22 @@
+{
+  "name": "leak-guard",
+  "version": "1.0.0",
+  "description": "Stops Claude Code from writing a credential into a file git would commit, and blocks a commit or push whose diff adds one. Allows credentials into .env and anything else git ignores, because that is where they belong. Zero dependencies, fails open.",
+  "author": {
+    "name": "Shend Llapashtica",
+    "url": "https://github.com/ShendLlapashtica"
+  },
+  "homepage": "https://github.com/ShendLlapashtica/leak-guard",
+  "repository": "https://github.com/ShendLlapashtica/leak-guard",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "secrets",
+    "credentials",
+    "api-keys",
+    "git",
+    "pre-commit",
+    "hooks",
+    "guardrails"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "description": "Scans what Claude is about to write, and the diff it is about to commit or push, for credentials. Denies the write when the file would be committed, allows it when git ignores the file, and asks when a credential appears in a shell command.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/guard.mjs\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

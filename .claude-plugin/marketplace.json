@@ -1,0 +1,23 @@
+{
+  "name": "leak-guard-marketplace",
+  "owner": {
+    "name": "Shend Llapashtica",
+    "url": "https://github.com/ShendLlapashtica"
+  },
+  "metadata": {
+    "description": "leak-guard: keep credentials out of the commits Claude Code makes",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "leak-guard",
+      "source": "./",
+      "description": "Blocks a credential on its way into a tracked file, a commit or a push; allows it into .env. Zero dependencies, fails open.",
+      "version": "1.0.0",
+      "category": "security",
+      "license": "MIT",
+      "tags": ["security", "secrets", "git", "guardrails"],
+      "keywords": ["secrets", "credentials", "api-keys", "leak", "pre-commit"]
+    }
+  ]
+}
