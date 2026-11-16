@@ -99,7 +99,9 @@ inline password, and credentials embedded in a URL. A token that starts `ghp_`
 and runs 36 characters is not a coincidence, so these never guess.
 
 One rule is a judgement call: a **credential-shaped assignment**, like
-`password = "…"`. It is the most common real leak and the only rule here that
+`password = "…"`, including prefixed names such as `DB_PASSWORD`,
+`GITHUB_CLIENT_SECRET` or `MY_API_KEY`, and quoted keys such as
+`"password": "…"`. It is the most common real leak and the only rule here that
 can be wrong, so placeholders are filtered hard — `your-password-here`,
 `xxxxxxxx`, `${TOKEN}`, `<CLIENT_SECRET>`, `changeme`, anything read from the
 environment, any single lowercase word, anything under 12 characters. Turn it

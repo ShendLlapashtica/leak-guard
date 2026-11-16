@@ -66,6 +66,34 @@ test('a hardcoded credential is a finding, a placeholder is not', () => {
   }
 });
 
+test('a prefixed name or a quoted JSON key is a finding (issue #1)', () => {
+  for (const src of [
+    'DB_PASSWORD = "Xk29sLmQ8vRt1"',
+    'GITHUB_CLIENT_SECRET = "Xk29sLmQ8vRt1"',
+    'MY_API_KEY: "Xk29sLmQ8vRt1"',
+    'export MY_APP_DB_PASSWORD="Xk29sLmQ8vRt1"',
+    'db-password: "Xk29sLmQ8vRt1"',
+    '{ "password": "Xk29sLmQ8vRt1" }',
+    "{'db_password': 'Xk29sLmQ8vRt1'}",
+    'const config = { "client_secret": "Xk29sLmQ8vRt1" };',
+  ]) {
+    const f = scan(src);
+    assert.equal(f.length, 1, src);
+    assert.equal(f[0].id, 'hardcoded-credential', src);
+  }
+});
+
+test('a credential name inside another word is still not a finding', () => {
+  for (const src of [
+    'bypass = "Xk29sLmQ8vRt1"',
+    'password_hash = "Xk29sLmQ8vRt1"',
+    'secretary = "Xk29sLmQ8vRt1"',
+    'DB_PASSWORD = os.environ["DB_PASSWORD_VALUE_X"]',
+  ]) {
+    assert.deepEqual(scan(src), [], src);
+  }
+});
+
 test('the assignment rule can be switched off, the shape rules cannot', () => {
   const src = `const password = "Tr0ub4dor&3-horse"; const k = "${AWS}";`;
   assert.equal(scan(src, { creds: false }).length, 1);
